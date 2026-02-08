@@ -1,0 +1,376 @@
+esphome:
+  name: home-security
+  friendly_name: home-security
+
+esp32:
+  board: esp32-poe
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "jLUEqJ0g3vpgBWrZtgpqst2pzl4r4zgD1sIqSQyxkEo="
+
+ota:
+  - platform: esphome
+    password: "0fada78bf071b27697ea71b857afcf0c"
+
+ethernet:
+  type: LAN8720
+  mdc_pin: GPIO23
+  mdio_pin: GPIO18
+  clk_mode: GPIO17_OUT
+  phy_addr: 0
+  power_pin: GPIO12
+
+button:
+- platform: safe_mode
+  name: Safe Mode Boot
+  entity_category: diagnostic
+
+i2c:
+  id: bus_a
+  scan: true
+  sda: GPIO33
+  scl: GPIO32
+
+mcp23017:
+  - id: 'mcp23017_hub'
+    address: 0x20
+
+ads1115:
+  - address: 0x48
+    id: ads1115_0
+  - address: 0x49
+    id: ads1115_1
+
+
+binary_sensor:
+  # Leak Detection binary inputs from analog signals
+  - platform: analog_threshold
+    name: "ADS11150 A0 Thresh"
+    id: ads1115_0_a0_thresh
+    sensor_id: ads1115_0_a0
+    threshold: 2.0
+    filters:
+      - invert
+      - delayed_on: 100ms
+      - delayed_off: 5s
+    device_class: moisture
+
+  - platform: analog_threshold
+    name: "ADS11150 A1 Thresh"
+    id: ads1115_0_a1_thresh
+    sensor_id: ads1115_0_a1
+    threshold: 2.0
+    filters:
+      - invert
+      - delayed_on: 100ms
+      - delayed_off: 5s
+    device_class: moisture
+
+  - platform: analog_threshold
+    name: "ADS11150 A2 Thresh"
+    id: ads1115_0_a2_thresh
+    sensor_id: ads1115_0_a2
+    threshold: 2.0
+    filters:
+      - invert
+      - delayed_on: 100ms
+      - delayed_off: 5s
+    device_class: moisture
+
+  - platform: analog_threshold
+    name: "ADS11150 A3 Thresh"
+    id: ads1115_0_a3_thresh
+    sensor_id: ads1115_0_a3
+    threshold: 2.0
+    filters:
+      - invert
+      - delayed_on: 100ms
+      - delayed_off: 5s
+    device_class: moisture
+
+  - platform: analog_threshold
+    name: "ADS11151 A0 Thresh"
+    id: ads1115_1_a0_thresh
+    sensor_id: ads1115_1_a0
+    threshold: 2.0
+    filters:
+      - invert
+      - delayed_on: 100ms
+      - delayed_off: 5s
+    device_class: moisture
+
+  - platform: analog_threshold
+    name: "ADS11151 A1 Thresh"
+    id: ads1115_1_a1_thresh
+    sensor_id: ads1115_1_a1
+    threshold: 2.0
+    filters:
+      - invert
+      - delayed_on: 100ms
+      - delayed_off: 5s
+    device_class: moisture
+
+  - platform: analog_threshold
+    name: "ADS11151 A2 Thresh"
+    id: ads1115_1_a2_thresh
+    sensor_id: ads1115_1_a2
+    threshold: 2.0
+    filters:
+      - invert
+      - delayed_on: 100ms
+      - delayed_off: 5s
+    device_class: moisture
+
+  - platform: analog_threshold
+    name: "ADS11151 A3 Thresh"
+    id: ads1115_1_a3_thresh
+    sensor_id: ads1115_1_a3
+    threshold: 2.0
+    filters:
+      - invert
+      - delayed_on: 100ms
+      - delayed_off: 5s
+    device_class: moisture
+
+  # MCP23017 Binary inputs
+  - platform: gpio
+    name: "MCP23017 Pin A0"
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 0
+      mode:
+        input: true
+        pullup: true
+      inverted: false
+
+  - platform: gpio
+    name: "MCP23017 Pin A1"
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 1
+      mode:
+        input: true
+        pullup: true
+      inverted: false
+
+  - platform: gpio
+    name: "MCP23017 Pin A2"
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 2
+      mode:
+        input: true
+        pullup: true
+      inverted: false
+
+  - platform: gpio
+    name: "MCP23017 Pin A3"
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 3
+      mode:
+        input: true
+        pullup: true
+      inverted: false
+
+  - platform: gpio
+    name: "MCP23017 Pin A4"
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 4
+      mode:
+        input: true
+        pullup: true
+      inverted: false
+
+  - platform: gpio
+    name: "MCP23017 Pin A5"
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 5
+      mode:
+        input: true
+        pullup: true
+      inverted: false
+
+  - platform: gpio
+    name: "MCP23017 Pin A6"
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 6
+      mode:
+        input: true
+        pullup: true
+      inverted: false
+
+  - platform: gpio
+    name: "MCP23017 Pin A7"
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 7
+      mode:
+        input: true
+        pullup: true
+      inverted: false
+
+  - platform: gpio
+    name: "MCP23017 Pin B0"
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 8
+      mode:
+        input: true
+        pullup: true
+      inverted: false
+
+  - platform: gpio
+    name: "MCP23017 Pin B1"
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 9
+      mode:
+        input: true
+        pullup: true
+      inverted: false
+
+  - platform: gpio
+    name: "MCP23017 Pin B2"
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 10
+      mode:
+        input: true
+        pullup: true
+      inverted: false
+
+  - platform: gpio
+    name: "MCP23017 Pin B3"
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 11
+      mode:
+        input: true
+        pullup: true
+      inverted: false
+
+  - platform: gpio
+    name: "MCP23017 Pin B4"
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 12
+      mode:
+        input: true
+        pullup: true
+      inverted: false
+
+  - platform: gpio
+    name: "MCP23017 Pin B5"
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 13
+      mode:
+        input: true
+        pullup: true
+      inverted: false
+
+  - platform: gpio
+    name: "MCP23017 Pin B6"
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 14
+      mode:
+        input: true
+        pullup: true
+      inverted: false
+
+  - platform: gpio
+    name: "MCP23017 Pin B7"
+    pin:
+      mcp23xxx: mcp23017_hub
+      number: 15
+      mode:
+        input: true
+        pullup: true
+      inverted: false
+
+sensor:
+  # ADS1115 0
+  - platform: ads1115
+    id: ads1115_0_a0
+    ads1115_id: ads1115_0
+    multiplexer: 'A0_GND'
+    gain: 4.096
+    name: "ADS1115_0 Channel A0"
+    update_interval: 2s
+    internal: true
+
+  - platform: ads1115
+    id: ads1115_0_a1
+    ads1115_id: ads1115_0
+    multiplexer: 'A1_GND'
+    gain: 4.096
+    name: "ADS1115_0 Channel A1"
+    update_interval: 2s
+    internal: true
+
+  - platform: ads1115
+    id: ads1115_0_a2
+    ads1115_id: ads1115_0
+    multiplexer: 'A2_GND'
+    gain: 4.096
+    name: "ADS1115_0 Channel A2"
+    update_interval: 2s
+    internal: true
+
+  - platform: ads1115
+    id: ads1115_0_a3
+    ads1115_id: ads1115_0
+    multiplexer: 'A3_GND'
+    gain: 4.096
+    name: "ADS1115_0 Channel A3"
+    update_interval: 2s
+    internal: true
+
+  # ADS1115 0
+  - platform: ads1115
+    id: ads1115_1_a0
+    ads1115_id: ads1115_1
+    multiplexer: 'A0_GND'
+    gain: 4.096
+    name: "ADS1115_1 Channel A0"
+    update_interval: 2s
+    internal: true
+
+  - platform: ads1115
+    id: ads1115_1_a1
+    ads1115_id: ads1115_1
+    multiplexer: 'A1_GND'
+    gain: 4.096
+    name: "ADS1115_1 Channel A1"
+    update_interval: 2s
+    internal: true
+
+  - platform: ads1115
+    id: ads1115_1_a2
+    ads1115_id: ads1115_1
+    multiplexer: 'A2_GND'
+    gain: 4.096
+    name: "ADS1115_1 Channel A2"
+    update_interval: 2s
+    internal: true
+
+  - platform: ads1115
+    id: ads1115_1_a3
+    ads1115_id: ads1115_1
+    multiplexer: 'A3_GND'
+    gain: 4.096
+    name: "ADS1115_1 Channel A3"
+    update_interval: 2s
+    internal: true
