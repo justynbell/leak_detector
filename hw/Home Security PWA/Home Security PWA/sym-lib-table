@@ -1,6 +1,0 @@
-(sym_lib_table
-  (version 7)
-  (lib (name "1884340000")(type "KiCad")(uri "/home/justyn/dev/leak_detector/hw/Home Security PWA/Components/symbol/1884340000.kicad_sym")(options "")(descr ""))
-  (lib (name "MCP23017_E_SO")(type "KiCad")(uri "/home/justyn/dev/leak_detector/hw/Home Security PWA/Components/symbol/MCP23017_E_SO.kicad_sym")(options "")(descr ""))
-  (lib (name "PPTC101LFBN_RC")(type "KiCad")(uri "/home/justyn/dev/leak_detector/hw/Home Security PWA/Components/symbol/PPTC101LFBN_RC.kicad_sym")(options "")(descr ""))
-)
