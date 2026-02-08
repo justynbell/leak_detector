@@ -1,4 +1,4 @@
 (fp_lib_table
   (version 7)
-  (lib (name "foorprint")(type "KiCad")(uri "/home/justyn/dev/leak_detector/hw/Home Security PWA/Components/foorprint")(options "")(descr ""))
+  (lib (name "footprint")(type "KiCad")(uri "/home/justyn/dev/leak_detector/hw/Home Security PWA/Components/footprint")(options "")(descr ""))
 )

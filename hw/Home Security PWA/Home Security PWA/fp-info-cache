@@ -1,4 +1,4 @@
-27251766485632415
+27251871921727935
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -107904,35 +107904,35 @@ Varistor VF
 0
 2
 2
-foorprint
-1884340000
+footprint
+CONN4_1884340000_WED
 
 1884340000 
 0
 4
 4
-foorprint
+footprint
 PPTC101LFBN-RC
 
 
 0
 10
 10
-foorprint
+footprint
 SOIC28-W_MC_MCH
 
 MCP23017T-E/SO 
 0
 28
 28
-foorprint
+footprint
 SOIC28-W_MC_MCH-L
 
 MCP23017T-E/SO 
 0
 28
 28
-foorprint
+footprint
 SOIC28-W_MC_MCH-M
 
 MCP23017T-E/SO 
